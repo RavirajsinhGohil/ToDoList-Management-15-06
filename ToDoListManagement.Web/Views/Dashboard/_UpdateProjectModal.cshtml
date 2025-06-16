@@ -1,0 +1,43 @@
+@model ToDoListManagement.Entity.ViewModel.ProjectViewModel
+
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form id="editProjectForm" asp-controller="Project" asp-action="UpdateProject" method="post">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Project
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editProjectId" asp-for="ProjectId" />
+                <div class="form-floating mb-3">
+                    <input asp-for="ProjectName" type="text" class="form-control" id="editProjectName"
+                        placeholder="Name">
+                    <label for="categoryname">Name*</label>
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="editProjectDescription" placeholder="Description"
+    using ToDoListManagement.Entity.Migrations;
+#line default
+                <label for="addCategoryDescription">Description</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="pMAssignedTo" asp-for="AssignedToPM"
+                        aria-label="Assigned To">
+                        <option value="">Select PM</option>
+                        <option value="@PMName">@PMName</option>
+                    </select>
+                    <label for="pMAssignedTo">Assign PM</label>
+                    <span asp-validation-for="AssignedToPM" class="text-danger"></span>
+                </div>
+                <button type="button" class="btn btn-dark">+ Assign Members</button>
+            </div>
+            <div class="modal-footer d-flex justify-content-center px-0">
+                <button type="submit" class="btn navbar-color text-white btn-secondary">Save</button>
+                <button type="button" class="btn cancel-btn-color ms-1 btn-outline-secondary"
+                    data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

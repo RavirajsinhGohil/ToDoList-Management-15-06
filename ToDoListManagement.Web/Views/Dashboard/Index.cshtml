@@ -176,9 +176,10 @@
                         <select class="form-select" id="pMAssignedTo" asp-for="Project.AssignedToPM"
                             asp-items="@(Model.ProjectManagers.Select(u => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Value = u.UserId.ToString(), Text = u.Name }))"
                             aria-label="Assigned To">
-                            <option value="">Select User</option>
+                            <option value="">Select PM</option>
                         </select>
                         <label for="pMAssignedTo">Assign PM</label>
+                        <span asp-validation-for="Project.AssignedToPM" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -194,37 +195,7 @@
 
 <!-- Update Project Modal -->
 <div class="modal fade" id="updateProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <form id="editProjectForm" asp-controller="Project" asp-action="UpdateProject" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Project
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" id="editProjectId" asp-for="Project.ProjectId" />
-                    <div class="form-floating mb-3">
-                        <input asp-for="Project.ProjectName" type="text" class="form-control" id="editProjectName"
-                            placeholder="Name">
-                        <label for="categoryname">Name*</label>
-                        <span asp-validation-for="Project.ProjectName" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" id="editProjectDescription" placeholder="Description"
-                            asp-for="Project.Description" style="height: 90px;"></textarea>
-                        <label for="addCategoryDescription">Description</label>
-                    </div>
-                    <button type="button" class="btn btn-dark">+ Assign Members</button>
-                </div>
-                <div class="modal-footer d-flex justify-content-center px-0">
-                    <button type="submit" class="btn navbar-color text-white btn-secondary">Save</button>
-                    <button type="button" class="btn cancel-btn-color ms-1 btn-outline-secondary"
-                        data-bs-dismiss="modal">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    @* <partial name="_UpdateProjectModal" /> *@
 </div>
 
 <!-- Delete Project Modal -->

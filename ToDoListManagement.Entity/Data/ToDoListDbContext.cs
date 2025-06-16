@@ -21,6 +21,11 @@ public partial class ToDoListDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        // modelBuilder.Entity<Project>()
+        // .HasOne(p => p.AssignedPM)
+        // .WithMany()
+        // .HasForeignKey(p => p.AssignedToPM);
         
         modelBuilder.Entity<User>().HasData(
             new User 

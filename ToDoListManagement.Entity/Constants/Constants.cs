@@ -33,6 +33,7 @@ public class Constants
     public const string EmailAlreadyExistsError = "Email already registered.";
     public const string ConfirmPasswordRequiredError = "Confirm Password is required.";
     public const string PasswordMismatchError = "Password and Confirm Password do not match.";
+    public const string AssignedToPMRequiredError = "Assign PM is required.";
 
     #endregion
 

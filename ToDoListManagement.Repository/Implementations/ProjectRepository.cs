@@ -42,9 +42,15 @@ public class ProjectRepository : IProjectRepository
             return null;
         }
 
+        // return await _context.Projects
+        //     .Include(p => p.ProjectUsers)
+        //     .Include(p => p.AssignedPM)
+        //     .FirstOrDefaultAsync(p => p.ProjectId == projectId && !p.IsDeleted);
         return await _context.Projects
-            .Include(p => p.ProjectUsers)
-            .FirstOrDefaultAsync(p => p.ProjectId == projectId && !p.IsDeleted);
+        .Include(p => p.ProjectUsers)
+            .ThenInclude(pu => pu.User)
+        .Include(p => p.AssignedPM) // 👈 This includes the PM (AssignedToPM)
+        .FirstOrDefaultAsync(p => p.ProjectId == projectId && !p.IsDeleted);
     }
 
     public async Task<int> UpdateProjectAsync(Project project)

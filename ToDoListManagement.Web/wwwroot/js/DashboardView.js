@@ -50,15 +50,14 @@ function openEditProjectModal(projectId) {
             if (response.success === false) {
                 toastr.error(response.message);
             }
-            else{
-                $("#editProjectId").val(projectId);
-                $("#editProjectName").val(response.data.projectName);
-                $("#editProjectDescription").val(response.data.description);
+            else {
+                debugger;
+                $("#updateProjectModal").html(response);
                 $("#updateProjectModal").modal('show');
             }
         },
         error: function () {
-            alert("Error fetching project details.");
+            console.log("Error fetching project details.");
         }
     });
 }

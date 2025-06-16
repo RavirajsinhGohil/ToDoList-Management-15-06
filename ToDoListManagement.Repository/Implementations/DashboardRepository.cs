@@ -21,10 +21,10 @@ public class DashboardRepository : IDashboardRepository
                 .Where(p => !p.IsDeleted)
                 .Include(pu => pu.ProjectUsers)
                 .ThenInclude(u => u.User)
-                .Where(pu => pu.ProjectUsers.Any(u => u.UserId == userId && !u.User.IsDeleted))
+                // .Where(pu => pu.ProjectUsers.Any(u => u.UserId == userId && !u.User.IsDeleted))
                 .OrderBy(p => p.ProjectId)
                 .ToListAsync();
-                // Modify according to Task Completion for progress report
+                // Modify according to Task Completion forprogress report
         }
         return null;
     }

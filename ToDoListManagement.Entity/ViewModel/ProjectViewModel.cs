@@ -4,7 +4,7 @@ namespace ToDoListManagement.Entity.ViewModel;
 
 public class ProjectViewModel
 {
-    public ProjectViewModel()
+        public ProjectViewModel()
     {
         Users = [];
     }
@@ -17,6 +17,8 @@ public class ProjectViewModel
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
     public string? Status { get; set; }
+
+    [Required(ErrorMessage = Constants.Constants.AssignedToPMRequiredError)]
     public int? AssignedToPM { get; set; }
 
     public string? PMName { get; set; }

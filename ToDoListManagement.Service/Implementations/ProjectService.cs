@@ -49,6 +49,8 @@ public class ProjectService : IProjectService
             Description = project.Description,
             StartDate = project.CreatedOn,
             EndDate = project.EndDate,
+            AssignedToPM = project.AssignedToPM,
+            PMName = project.AssignedPM?.Name ?? string.Empty,
             Status = project.Status
         };
     }

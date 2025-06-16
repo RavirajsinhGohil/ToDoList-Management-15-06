@@ -45,15 +45,15 @@ public class ProjectController : BaseController
         {
             return Json(new { success = false, message = Constants.ProjectNotFoundMessage });
         }
-        
-        return Json(new { success = true, data = model } );
+    
+        return PartialView("~/Views/Dashboard/_UpdateProjectModal.cshtml", model);
     }
 
     [HttpPost]
     [Authorize (Roles = "Admin")]
-    public async Task<IActionResult> UpdateProject(DashboardViewModel model)
+    public async Task<IActionResult> UpdateProject(ProjectViewModel model)
     {
-        int? projectId = await _projectService.UpdateProjectAsync(model.Project, SessionUser.UserId);
+        int? projectId = await _projectService.UpdateProjectAsync(model, SessionUser.UserId);
         if (projectId.HasValue && projectId.Value > 0)
         {
             TempData["SuccessMessage"] = Constants.ProjectUpdatedMessage;
